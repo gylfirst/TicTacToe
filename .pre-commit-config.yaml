@@ -1,0 +1,25 @@
+ci:
+    autoupdate_branch: dev
+
+repos:
+    -   repo: https://github.com/pre-commit/pre-commit-hooks
+        # Pre-commit hook version.
+        rev: v4.6.0
+        hooks:
+            -   id: check-yaml
+            -   id: end-of-file-fixer
+            -   id: requirements-txt-fixer
+                files: requirements.txt
+            -   id: trailing-whitespace
+                exclude_types:
+                    - markdown
+
+    -   repo: https://github.com/astral-sh/ruff-pre-commit
+        # Ruff version.
+        rev: v0.4.5
+        hooks:
+            # Run the linter.
+            -   id: ruff
+                args: [ --fix ]
+            # Run the formatter.
+            -   id: ruff-format
